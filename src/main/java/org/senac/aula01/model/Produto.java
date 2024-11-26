@@ -19,8 +19,9 @@ public class Produto {
     @Column(name = "description", length = 255)
     private String descricao;
 
-    
     private Double preco;
+
+    private String imagemURL;
 
     public Integer getId() {
         return id;
@@ -52,6 +53,14 @@ public class Produto {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+    
+    public String getImagemURL() {
+        return imagemURL;
+    }
+
+    public void setImagemURL(String imagemURL) {
+        this.imagemURL = imagemURL;
     }
     
 
