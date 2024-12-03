@@ -24,9 +24,15 @@ public class ProdutoController {
     private ProdutoRepository repository;
 
     @GetMapping
-    public List<Produto> get(@RequestParam(required = false, defaultValue = "nome") String order) {
+    public List<Produto> get(
+        @RequestParam(required = false, defaultValue = "nome") String order,
+        @RequestParam(required = false) String filter
+    ) {
         Sort s = Sort.by(order);
-        return repository.findAll(s);
+        if (filter == null) {
+            return repository.findAll(s);
+        }
+        return repository.findByNomeContains(filter, s);
     }    
 
     @PostMapping
